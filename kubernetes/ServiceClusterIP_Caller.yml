@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-app-caller-clusterip
+  namespace: service-demonstrator
+spec:
+  selector:
+    app: go-app-caller
+  type: ClusterIP
+  ports:
+  - name: go-app-caller-ports
+    port: 8091
+    targetPort:  8091

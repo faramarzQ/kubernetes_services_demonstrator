@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-app-listener-clusterip
+  namespace: service-demonstrator
+  labels:
+    service: go-app-listener_clusterip
+spec:
+  selector:
+    app: go-app-listener
+  type: ClusterIP
+  ports:
+  - name: go-app-listener-port-http
+    port: 8090
+    targetPort: http

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-app-caller
+  namespace: service-demonstrator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-app-caller
+  template:
+    metadata:
+      labels:
+        app: go-app-caller
+    spec:
+      containers:
+      - name: go-app-caller
+        image: go-caller:1.5
+        env:
+          - name: LISTENER_IP
+            valueFrom:
+              configMapKeyRef:
+                name: go-app-configs
+                key: LISTENER_IP

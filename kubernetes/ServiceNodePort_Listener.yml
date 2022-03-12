@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-app-listener-nodeport
+  namespace: service-demonstrator
+spec:
+  selector:
+    app: go-app-listener
+  type: NodePort
+  ports:
+  - name: go-app-listener-port-http
+    port:  80
+    targetPort: 8090
